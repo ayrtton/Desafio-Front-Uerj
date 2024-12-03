@@ -1,0 +1,16 @@
+.home {
+  padding: 64px;
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  &__list-grid {
+    max-width: 75%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    gap: 24px;
+  }
+}
