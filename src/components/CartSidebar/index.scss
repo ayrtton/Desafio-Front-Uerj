@@ -1,10 +1,138 @@
-.sidebar {
-  width: 350px;
-  height: 500px;
+.cart-sidebar {
+  position: fixed;
+  top: 64px;
+  right: 64px;
+  width: 400px;
   min-width: 250px;
   max-width: 20%;
+  height: 500px;
+  background: white;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
 
-  position: fixed;
-  right: 64px;
-  top: 64px;
-}
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+
+  &__items {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  &__item {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__item-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__item-name {
+    flex: 1;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+
+  &__item-x {
+    color: #f4dc26;
+    font-size: 1.25rem;
+  }
+
+  &__item-characteristic {
+    display: flex;
+    justify-content: space-between;
+    color: #6b7280;
+    font-size: 0.875rem;
+    padding-left: 1.75rem;
+    opacity: 0.7;
+  }
+
+  &__remove-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 100%;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    font-size: 1.25rem;
+    line-height: 1;
+    font-family: 'Poppins', sans-serif;
+
+    &:hover {
+      color: #f4dc26;
+      border: 1px solid #f4dc26;
+    }
+  }
+
+  &__footer {
+    margin-top: auto;
+    padding-top: 1rem;
+  }
+
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &__checkout-button {
+    width: 100%;
+    background: #f4dc26;
+    color: black;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    &:hover:not(:disabled) {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    &:disabled {
+      background: #e5e7eb;
+      color: #9ca3af;
+      cursor: not-allowed;
+    }
+  }
+
+  &__empty-message {
+    height: 100%;
+    width: 100%;
+    opacity: 0.2;
+    background-image: url('@/assets/cover-pokemon.png');
+    background-size: contain;
+    background-repeat: repeat;
+  }
+} 
