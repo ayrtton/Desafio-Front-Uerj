@@ -154,7 +154,7 @@ const pokemons = [
 function App() {
   return (
     <div className="home">
-      <h1 className="home__title">Pokémons</h1>
+      <h1 className="home__title">Pokémon</h1>
       <div className="home__list-grid">
         {pokemons.map((pokemon) => (
           <PokemonCard

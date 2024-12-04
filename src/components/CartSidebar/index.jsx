@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './index.scss';
+import ConfirmationModal from '../ConfirmationModal';
 
 function CartSidebar() {
   const pokemon = [
@@ -13,6 +14,7 @@ function CartSidebar() {
     }
   ];
   const [pokemonList, setPokemonList] = useState(pokemon);
+  const [isOpen, setIsOpen] = useState(false);
 
   const isPokemonListEmpty = () => {
     return pokemonList.length === 0;
@@ -39,8 +41,9 @@ function CartSidebar() {
           ))}
         </ul>
         <div className="cart-sidebar__footer">
-          <button className="cart-sidebar__checkout-button" disabled={isPokemonListEmpty()}>Confirmar Equipe</button>
+          <button className="cart-sidebar__checkout-button" onClick={() => setIsOpen(true)} disabled={isPokemonListEmpty()}>Confirmar Equipe</button>
         </div>
+        {isOpen && <ConfirmationModal setIsOpen={setIsOpen}/>}
     </div>
   );
 }
