@@ -3,11 +3,13 @@ import './Home.scss';
 
 import CartSidebar from '@/components/CartSidebar';
 import PokemonCard from '@/components/PokemonCard';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { PokemonContext } from '@/context/team';
 
 function App() {
   const [pokemonList, setPokemonList] = useState(null);
+  const { addToTeam } = useContext(PokemonContext);
 
   async function getPokemonList() {
     const response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0");
@@ -22,7 +24,7 @@ function App() {
         id: pokemon.id,
         name: pokemon.name,
         image: pokemon.sprites.other.dream_world.front_default,
-        gif: pokemon.sprites.other.dream_world.front_default,
+        gif: pokemon.sprites.other.showdown.front_default,
         types: pokemon.types,
         abilities: pokemon.abilities
       }
@@ -47,7 +49,7 @@ function App() {
             types={pokemon.types}
             abilities={pokemon.abilities}
             onClick={() => {
-              console.log(pokemon);
+              addToTeam(pokemon);
             }}
           />
         ))}

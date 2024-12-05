@@ -1,16 +1,14 @@
+import { useContext } from 'react';
 import './index.scss';
+import { PokemonContext } from '@/context/team';
 
 function ConfirmationModal({ setIsOpen }) {
-  const pokemon = [
-    {
-      name: "Charizard",
-      characteristic: "Likes to run"
-    }, 
-    {
-      name: "Charmeleon",
-      characteristic: "Strong willed"
-    }
-  ];
+  const { pokemonTeam, clearTeam } = useContext(PokemonContext);
+
+  const handleConfirmation = () => {
+    clearTeam();
+    setIsOpen(false);
+  }
 
   return (
     <div className="modal-overlay">
@@ -23,20 +21,20 @@ function ConfirmationModal({ setIsOpen }) {
         </div>
         <div className="confirmation-modal__content">
           <ul className="confirmation-modal__items">
-            {pokemon.map((pokemon) => (
-              <ul className="confirmation-modal__item">
-                <img className="confirmation-modal__item-image" src="" alt="Imagem do Pokémon" />
+            {pokemonTeam.map((pokemon) => (
+              <ul className="confirmation-modal__item" key={pokemon.id}>
+                <img className="confirmation-modal__item-image" src={pokemon.gif} alt="Imagem do Pokémon" />
                 <h2 className="confirmation-modal__item-name">{pokemon.name}</h2>
-                <span className="confirmation-modal__item-info">{pokemon.characteristic}</span>
+                <span className="confirmation-modal__item-info">{pokemon.types.map((types) => (types.type.name)).join(', ')}</span>
               </ul>
             ))}
           </ul>
           <div className="confirmation-modal__total">
             <div>Total de Pokémon na equipe</div>
-            <div>{pokemon.length}</div>
+            <div>{pokemonTeam.length}</div>
           </div>
         </div>
-        <button className="confirmation-modal__button" onClick={() => setIsOpen(false)}>Começar nova equipe</button>
+        <button className="confirmation-modal__button" onClick={handleConfirmation}>Começar nova equipe</button>
       </div>
     </div>
   )
