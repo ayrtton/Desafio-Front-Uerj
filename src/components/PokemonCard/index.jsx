@@ -14,10 +14,10 @@ const PokemonCard = ({ image, name, types, onClick, abilities }) => {
       <div className="pokemon-card__content">
         <p className="pokemon-card__name">{name}</p>
         <p className="pokemon-card__info">
-          Tipos: {types.map((type) => type.name).join(', ')}
+          Tipos: {types.map((types) => (types.type.name)).join(', ')}
         </p>
         <p className="pokemon-card__info">
-          Habilidades: {abilities.map((ability) => ability.name).join(', ')}
+          Habilidades: {abilities.map((abilities) => (abilities.ability.name)).join(', ')}
         </p>
       </div>
     </div>

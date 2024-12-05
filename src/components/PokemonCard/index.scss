@@ -8,13 +8,14 @@
     position: relative;
     width: 250px;
     height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 16px;
+    width: 70%;
+    height: 70%;
   }
 
   &__button {
@@ -63,6 +64,7 @@
     font-weight: 600;
     font-size: 1.3rem;
     margin: 4px 0px;
+    text-transform: capitalize;
   }
 
   &__info {
